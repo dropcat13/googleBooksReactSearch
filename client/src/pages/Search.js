@@ -7,8 +7,31 @@ import Results from "../components/Results";
 import BookSearch from "../components/BookSearch";
 // import "../style.css";
 
-function Search() {
-  return (
+class Search extends React.Component {
+    state= {
+        SearchResults: [
+           
+        ]
+    }
+    getSearch = (Search) => {
+        console.log(Search)
+        const books = search.data.results;
+        console.log(books)
+        let answer = books.map(res => {
+            return {
+            img: res.items.volumeInfo.thumbnail,
+            title: res.items.volumeInfo.name.last, 
+            author: res.items.volumeInfo.author,
+            blurb: res.items.volumeInfo.description
+            };
+        });
+        this.setState({
+            SearchResults: answer
+        })
+
+    }
+  render (){
+       return(
     <div>
       <Container style={{ marginTop: 30 }}>
         <Row>
@@ -19,7 +42,7 @@ function Search() {
         <br />
         <Row>
           <Col size="md-12">
-            <BookSearch />
+            <BookSearch getSearch={this.getSearch}/>
           </Col>
         </Row>
         <br />
@@ -30,7 +53,8 @@ function Search() {
         </Row>
       </Container>
     </div>
-  );
+       )
+}
 }
 
 export default Search;
