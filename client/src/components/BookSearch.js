@@ -6,9 +6,17 @@ import React from "react";
 
 function BookSearch() {
 return (
-<div className="card text-center">
+<div className="card text-left">
 {/* work out how to put () in the h3 text */}
-<h3>Search for a book to begin!</h3>
+<h3 className="card-header">Book Search</h3>
+<div className="card-body">
+    <h6>Book</h6>
+    <input type="text" id="title" name="title" placeholder="Book title..." />
+    <button className="btn btn-danger">
+        SEARCH
+    </button>
+</div>
+
 </div>
 );
 }

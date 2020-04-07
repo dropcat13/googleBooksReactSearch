@@ -4,13 +4,15 @@ import React from "react";
 // import Col from "../Col";
 import "../index.css";
 
-function Results() {
+function BookTile(props) {
     return (
         <div className="card text-left">
         {/* work out how to put () in the h3 text */}
-        <h3 className="card-header">Results</h3>
+        <h3 className="card-title">{props.title}</h3>
         <div className="card-body">
-            <h4>Search For A Book To Begin!</h4>
+            <h6>Written by {props.author}</h6>
+            <img alt={props.img} className="img-fluid" src={props.img} style={{ margin: "0 auto" }}></img>
+            <p>{props.blurb}</p>
         
         </div>
         
@@ -18,4 +20,4 @@ function Results() {
     );
     }
     
-    export default Results;
+    export default BookTile;

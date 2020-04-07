@@ -3,3 +3,9 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+#titleBox {
+  text-align: center;
+  background-color: cadetblue;
+  padding: 20px;
+}
