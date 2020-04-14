@@ -9,22 +9,26 @@ import BookSearch from "../components/BookSearch";
 
 class Search extends React.Component {
     state= {
-        SearchResults: [
-           
-        ]
+        SearchResults: []
     }
-    getSearch = (Search) => {
-        console.log(Search)
-        const books = search.data.results;
-        console.log(books)
+
+    getSearch = (SearchResults) => {
+        let books = [];
+        // console.log("Search:" + JSON.stringify(SearchResults))
+        books = SearchResults.data.items;
+        // console.log("Books:" + JSON.stringify(books))
         let answer = books.map(res => {
+            console.log("result:" + JSON.stringify(res))
             return {
-            img: res.items.volumeInfo.thumbnail,
-            title: res.items.volumeInfo.name.last, 
-            author: res.items.volumeInfo.author,
-            blurb: res.items.volumeInfo.description
+            // img: res.volumeInfo.imageLinks.smallThumbnail || res.volumeInfo.imageLinks.thumbnail,
+            title: res.volumeInfo.title, 
+            author: res.volumeInfo.authors,
+            blurb: res.volumeInfo.description,
+            id: res.id,
+            saved:false
             };
         });
+        console.log("Answer",answer)
         this.setState({
             SearchResults: answer
         })
@@ -48,7 +52,7 @@ class Search extends React.Component {
         <br />
         <Row>
           <Col size="md-12">
-          <Results />
+          <Results records={this.state.SearchResults}/>
           </Col>
         </Row>
       </Container>
