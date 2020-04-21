@@ -14,7 +14,6 @@ class Results extends React.Component{
     var booksrecords = this.props.records;
     return (
         <div className="card text-left">
-        {/* work out how to put () in the h3 text */}
         <h3 className="card-header">Results</h3>
         <div className="card-body">
 

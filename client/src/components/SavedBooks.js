@@ -48,7 +48,6 @@ render () {
     var bookslist = this.state.books
     return (
     <div className="card text-left">
-        {/* work out how to put () in the h3 text */}
         <h3 className="card-header">Saved Books</h3>
         <div className="card-body">
        
