@@ -9,3 +9,8 @@ body {
   background-color: cadetblue;
   padding: 20px;
 }
+
+.card {
+  /* padding: 20px; */
+  margin: 20px;
+}

@@ -18,15 +18,20 @@ class Results extends React.Component{
         <h3 className="card-header">Results</h3>
         <div className="card-body">
 
-            {booksrecords.map((rec,key)=> {
-                return (<BookTileResult 
-                    book = {rec}
-                 
-                    savedBook = {this.props.savedBook}
-                 key = {key}
-                 /> 
-                )})}
-        <h4>Search For A Book To Begin!</h4> 
+            {booksrecords
+                ? <div>
+                {booksrecords.map((rec,key)=> {
+                    return (<BookTileResult 
+                        book = {rec}
+                    
+                        savedBook = {this.props.savedBook}
+                    key = {key}
+                    /> 
+                    )})}
+                </div>
+                :
+                <h4>Search For A Book To Begin!</h4> 
+            }  
         </div> 
         
         </div>

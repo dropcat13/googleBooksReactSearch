@@ -12,14 +12,35 @@ state = {
     yesrecords:false
 }
 
+deleteBook = (id) => {
+    var books=this.state.books
+    for (let i=0; i<books.length; i++) {
+        if (books[i].id===id) {
+            books[i].deleted = true
+        }
+    }
+    this.setState({books: books})
+}
+
+
 componentDidMount = () => {
     api.getSavedBooks()
     .then(res => {
         console.log(res.data)
-        if(res.data.length>0){
-            var yesrecords = true;
+        var bookssaved = []
+        for(let i=0;i < res.data.length;i++){
+            let record = {
+                title: res.data[i].title,
+                authors: res.data[i].authors,
+                synopsis: res.data[i].synopsis,
+                id: res.data[i]._id,
+                img: res.data[i].img,
+                link: res.data[i].link,
+                deleted: false
+            }
+            bookssaved.push(record)
         }
-        this.setState({books: res.data,yesrecords:yesrecords})
+        this.setState({books: bookssaved })
     })
 }
 
@@ -31,13 +52,16 @@ render () {
         <h3 className="card-header">Saved Books</h3>
         <div className="card-body">
        
-        {/* if(yesrecords) {
-           {bookslist.map((book,key) => {
-                return(<BookTileSaved  book={book} key={key}/>)
-                })}
-        } else {
-            <h4>Save A Book To Begin!</h4>
-        } */}
+            {bookslist
+                ? <div>
+            {bookslist.map((book,key) => {
+                    return(<BookTileSaved book={book} key={key} deleteBook={this.deleteBook} />)
+                    })}
+                </div>
+                :
+                <h4>Save A Book To Begin!</h4>
+            }
+        }
             
                 
         }

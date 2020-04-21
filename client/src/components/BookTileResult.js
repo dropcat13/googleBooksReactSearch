@@ -17,7 +17,7 @@ saveBook = () => {
         synopsis: this.props.book.blurb,
         id: this.props.book.id,
         img: this.props.book.img,
-        link: this.props.book.link,
+        link: this.props.book.link
     }
 
     console.log("frontEnd: ", record)
@@ -51,7 +51,7 @@ render() {
             <h6>Written by {this.props.book.author}</h6>
             <img alt={this.props.book.img} className="img-fluid" src={this.props.book.img} style={{ margin: "0 auto" }}></img>
             <p>{this.props.book.blurb}</p>
-            {this.props.book.id}
+            {/* {this.props.book.id} */}
         
         </div>
         

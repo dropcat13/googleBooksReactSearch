@@ -7,7 +7,6 @@ function NavTabs() {
 
   return (
     <div>
-    <h2>Google Books</h2>
     <ul className="nav nav-tabs">
       <li className="nav-item">
         <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
