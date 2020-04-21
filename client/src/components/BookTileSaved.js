@@ -23,12 +23,12 @@ render(){
         {/* work out how to put () in the h3 text */}
         <h3 className="card-title">{this.props.book.title}</h3>
         <div className="card-body">
+            <img alt={this.props.book.img} className="img-fluid" src={this.props.book.img} style={{ margin: "0 auto" }}></img>
             <a href={this.props.book.link} target="_blank" rel="noreferrer noopener">
             <button className="btn btn-light">VIEW</button>
             </a>
             <button className="btn btn-danger" onClick={this.removeBook}>DELETE</button>
             <h6>Written by {this.props.book.authors}</h6>
-            <img alt={this.props.book.img} className="img-fluid" src={this.props.book.img} style={{ margin: "0 auto" }}></img>
             <p>{this.props.book.synopsis}</p>
         
         </div>

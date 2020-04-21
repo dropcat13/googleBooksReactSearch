@@ -14,3 +14,15 @@ body {
   /* padding: 20px; */
   margin: 20px;
 }
+
+.card-title {
+  padding: 20px;
+}
+
+.img-fluid {
+  padding: 20px;
+}
+
+.btn {
+  margin: 10px;
+}
