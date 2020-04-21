@@ -12,6 +12,17 @@ class Search extends React.Component {
         SearchResults: []
     }
 
+    savedBooK =(bookid) => {
+      var SearchResults = this.state.SearchResults;
+      console.log("Book If",bookid)
+      for(let i=0;i<SearchResults.length;i++){
+        if( SearchResults[i].id === bookid){
+          SearchResults[i].saved = true
+        }
+      }
+      this.setState({SearchResults:SearchResults})
+    }
+
     getSearch = (SearchResults) => {
         let books = [];
         // console.log("Search:" + JSON.stringify(SearchResults))
@@ -20,11 +31,12 @@ class Search extends React.Component {
         let answer = books.map(res => {
             console.log("result:" + JSON.stringify(res))
             return {
-            // img: res.volumeInfo.imageLinks.smallThumbnail || res.volumeInfo.imageLinks.thumbnail,
+            img: res.volumeInfo.imageLinks ? res.volumeInfo.imageLinks.smallThumbnail : "https://upload.wikimedia.org/wikipedia/commons/1/15/No_image_available_600_x_450.svg",
             title: res.volumeInfo.title, 
             author: res.volumeInfo.authors,
             blurb: res.volumeInfo.description,
             id: res.id,
+            link: res.volumeInfo.infoLink,
             saved:false
             };
         });
@@ -52,7 +64,8 @@ class Search extends React.Component {
         <br />
         <Row>
           <Col size="md-12">
-          <Results records={this.state.SearchResults}/>
+          <Results records={this.state.SearchResults}
+          savedBook={this.savedBooK}/>
           </Col>
         </Row>
       </Container>

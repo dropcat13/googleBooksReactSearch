@@ -15,8 +15,14 @@ export default {
     .post("/api/books/", newData)
   },
 
+  // deleteBook: function(newData) {
+  //   console.log("frontend API:", newData)
+  //   return axios
+  //   .post("/api/books/", newData)
+  // },
+
   getSavedBooks: function() {
     return axios
     .get("/api/books/")
   }
-};
+}

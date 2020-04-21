@@ -6,9 +6,9 @@ import api from "../API";
 import "../index.css";
 
 class BookTileResult extends React.Component {
-    state= {
-        saved:this.props.book.saved
-    }
+    // state= {
+    //     saved:this.props.book.saved
+    // }
 
 saveBook = () => {
     let record = {
@@ -16,14 +16,15 @@ saveBook = () => {
         authors: this.props.book.author,
         synopsis: this.props.book.blurb,
         id: this.props.book.id,
-        img: this.props.book.img
+        img: this.props.book.img,
+        link: this.props.book.link,
     }
 
     console.log("frontEnd: ", record)
     api.saveBooks(record)
     .then(res => {
         console.log("books saved:" )
-        this.setState({saved: true})
+        this.props.savedBook(this.props.book.id)
     })
     .catch(err => {
         console.log(err)
@@ -37,11 +38,18 @@ render() {
         {/* work out how to put () in the h3 text */}
         <h3 className="card-title">{this.props.book.title}</h3>
         <div className="card-body">
+
+            <a href={this.props.book.link} target="_blank" rel="noreferrer noopener">
             <button className="btn btn-light">VIEW</button>
-            {this.state.saved ? <h1>Book is already saved!</h1> :
-            <button className="btn btn-success" onClick={this.saveBook}>SAVE</button>}
+            </a>
+
+            {this.props.book.saved ? <h1>Book is already saved!</h1> : 
+       
+            <button className="btn btn-success" onClick={this.saveBook}>SAVE</button>
+      
+            }
             <h6>Written by {this.props.book.author}</h6>
-            {/* <img alt={this.props.book.img} className="img-fluid" src={this.props.book.img} style={{ margin: "0 auto" }}></img> */}
+            <img alt={this.props.book.img} className="img-fluid" src={this.props.book.img} style={{ margin: "0 auto" }}></img>
             <p>{this.props.book.blurb}</p>
             {this.props.book.id}
         

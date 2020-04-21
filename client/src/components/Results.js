@@ -6,26 +6,32 @@ import "../index.css";
 import "../pages/Search"
 import BookTileResult from "./BookTileResult";
 
-function Results(props) {
-    var booksrecords = props.records;
+class Results extends React.Component{
+
+    
+
+    render(){
+    var booksrecords = this.props.records;
     return (
         <div className="card text-left">
         {/* work out how to put () in the h3 text */}
         <h3 className="card-header">Results</h3>
         <div className="card-body">
+
             {booksrecords.map((rec,key)=> {
-                return(<BookTileResult 
+                return (<BookTileResult 
                     book = {rec}
-                    
+                 
+                    savedBook = {this.props.savedBook}
                  key = {key}
-                 />
+                 /> 
                 )})}
-         {/* <BookTileResult key={book.title} {...book}/>)} */}
         <h4>Search For A Book To Begin!</h4> 
         </div> 
         
         </div>
     );
+    }
 };
     
 export default Results;
